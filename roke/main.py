@@ -7,37 +7,44 @@ import click
 DICTS = {}
 
 
-def load_dicts(dicts):
-    for d in dicts:
+def load_dicts():
+    for d in get_dict_list():
         if d == "smallnum":
-            data = [str(x) for x in range(20)]
+            data = [str(x) for x in range(1, 21)]
+            name = d
         else:
-            with open(Path(__file__).parent / "data" / (d + ".txt")) as f:
+            with open(d) as f:
                 data = [s.strip() for s in f.readlines()]
+            name = d.stem
         shuffle(data)
-        DICTS[d] = cycle(data)
+        DICTS[name] = cycle(data)
 
 
-def gen_identifier(dicts, format):
-    for d in dicts:
+def gen_identifier(format):
+    for d in DICTS.keys():
         key = "{%s}" % d
         while key in format:
             format = format.replace(key, next(DICTS[d]), 1)
     return format
 
 
+def get_dict_list():
+    dicts = ["smallnum"]
+    places = [Path(__file__).parent / "data", Path("~/.local/roke"), Path(".roke")]
+    for place in places:
+        if place.is_dir():
+            dicts.extend(list(place.glob("*.txt")))
+    return dicts
+
+
 @click.command()
-@click.option(
-    "--dicts", default="smallnum,noun", help="What list of words should be used."
-)
 @click.option(
     "--format",
     default="{smallnum}-{noun}-{noun}",
     help="Format for the generated identifier.",
 )
 @click.option("--count", default=1, help="How many identifiers to generate.")
-def main(dicts, format, count):
-    dicts = [d.strip() for d in dicts.split(",")]
-    load_dicts(dicts)
+def main(format, count):
+    load_dicts()
     for _ in range(count):
-        print(gen_identifier(dicts, format))
+        print(gen_identifier(format))
