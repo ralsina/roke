@@ -4,7 +4,6 @@ repos:
     hooks:
     - id: check-builtin-literals
     - id: check-toml
-    - id: flake8
     - id: debug-statements
 -   repo: https://github.com/ambv/black
     rev: 19.10b0
@@ -14,3 +13,7 @@ repos:
     rev: ''
     hooks:
     - id: mypy
+-   repo: https://gitlab.com/PyCQA/flake8
+    rev: ''
+    hooks:
+    - id: flake8
