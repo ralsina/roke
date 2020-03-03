@@ -82,6 +82,12 @@ They should be unique **enough** for situations where you just need something
 to be "unique for a while" in a certain environment. Like, container names, 
 or maybe your children.
 
+Mandatory XKCD:
+
+![XKCD](https://imgs.xkcd.com/comics/password_strength.png)
+
+[Full Comic](https://xkcd.com/936/)
+
 ## Why the name?
 
 Roke is the name of an island in Earthsea. To know more about Roke and names,
