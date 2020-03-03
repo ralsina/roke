@@ -6,21 +6,20 @@ authors = ["Roberto Alsina <roberto.alsina@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/ralsina/roke"
-packages = [
-{ include = "roke" }
-]
-
+packages = [{ include = "roke" }]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.6"
 click = "^7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.3"
+black = "^19"
+flake8 = "^3.7.9"
 
+[tool.poetry.scripts]
+roke = 'roke:main'
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
-[tool.poetry.scripts]
-roke = 'roke:main'
