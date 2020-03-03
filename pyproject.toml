@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "roke"
+version = "0.1.0"
+description = "A library to name and identify things"
+authors = ["Roberto Alsina <roberto.alsina@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/ralsina/roke"
+packages = [
+{ include = "roke" }
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry.scripts]
+roke = 'roke:main'
