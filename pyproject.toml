@@ -14,8 +14,8 @@ click = "^7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.3"
-black = "^19"
 flake8 = "^3.7.9"
+black = "^19.10b0"
 
 [tool.poetry.scripts]
 roke = 'roke:main'
