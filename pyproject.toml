@@ -16,6 +16,7 @@ click = "^7"
 pytest = "^5.3"
 flake8 = "^3.7.9"
 black = "^19.10b0"
+mypy = "^0.761"
 
 [tool.poetry.scripts]
 roke = 'roke:main'

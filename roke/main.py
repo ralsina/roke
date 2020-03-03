@@ -1,26 +1,30 @@
 from itertools import cycle
 from pathlib import Path
 from random import shuffle
+from typing import List
 
 import click
 
 DICTS = {}
 
 
+def load_internal_dicts():
+    data = [str(x) for x in range(1, 21)]
+    shuffle(data)
+    DICTS["smallnum"] = cycle(data)
+
+
 def load_dicts():
+    load_internal_dicts()
     for d in get_dict_list():
-        if d == "smallnum":
-            data = [str(x) for x in range(1, 21)]
-            name = d
-        else:
-            with open(d) as f:
-                data = [s.strip() for s in f.readlines()]
-            name = d.stem
+        with open(d) as f:
+            data = [s.strip() for s in f.readlines()]
+        name = d.stem
         shuffle(data)
         DICTS[name] = cycle(data)
 
 
-def gen_identifier(format):
+def gen_identifier(format: str) -> str:
     for d in DICTS.keys():
         key = "{%s}" % d
         while key in format:
@@ -28,8 +32,8 @@ def gen_identifier(format):
     return format
 
 
-def get_dict_list():
-    dicts = ["smallnum"]
+def get_dict_list() -> List[Path]:
+    dicts = []
     places = [Path(__file__).parent / "data", Path("~/.local/roke"), Path(".roke")]
     for place in places:
         if place.is_dir():
