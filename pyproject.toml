@@ -17,9 +17,15 @@ pytest = "^5.3"
 flake8 = "^3.7.9"
 black = "^19.10b0"
 mypy = "^0.761"
+flake8-import-order = "^0.18.1"
 
 [tool.poetry.scripts]
 roke = 'roke:main'
+
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py36']

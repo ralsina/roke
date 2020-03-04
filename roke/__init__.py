@@ -1,1 +1,1 @@
-from .main import main, load_dicts, gen_identifier  # noqa: F401
+from .main import gen_identifier, load_dicts, main  # noqa: F401
