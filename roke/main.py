@@ -24,12 +24,12 @@ def load_dicts():
         DICTS[name] = cycle(data)
 
 
-def gen_identifier(format: str) -> str:
+def gen_identifier(pattern: str) -> str:
     for d in DICTS.keys():
         key = "{%s}" % d
-        while key in format:
-            format = format.replace(key, next(DICTS[d]), 1)
-    return format
+        while key in pattern:
+            pattern = pattern.replace(key, next(DICTS[d]), 1)
+    return pattern
 
 
 def get_dict_list() -> List[Path]:
@@ -43,12 +43,12 @@ def get_dict_list() -> List[Path]:
 
 @click.command()
 @click.option(
-    "--format",
+    "--pattern",
     default="{smallnum}-{noun}-{noun}",
-    help="Format for the generated identifier.",
+    help="Pattern for the generated identifier.",
 )
 @click.option("--count", default=1, help="How many identifiers to generate.")
-def main(format, count):
+def main(pattern, count):
     load_dicts()
     for _ in range(count):
-        print(gen_identifier(format))
+        print(gen_identifier(pattern))

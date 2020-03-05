@@ -5,7 +5,7 @@ identifiers should be:
 
 * More or less unique.
 * Easy to read, so you can read it to someone else over a phone, for example.
-* Configurable: not a single format in how they look
+* Configurable: not a single pattern in how they look
 * Customizable: it should be easy to do things like "make it work in spanish"
 
 To do this, inspired by a talk about [Magic Wormhole](https://github.com/warner/magic-wormhole) ... 
@@ -31,10 +31,10 @@ $ roke --count 5
 5-mutt-pamphlet
 ```
 
-You can change the format of the identifiers:
+You can change the pattern of the identifiers:
 
 ```
-$ roke --count 5 --format '{noun}+{noun}'
+$ roke --count 5 --pattern '{noun}+{noun}'
 plate+pasture
 pickle+syrup
 colloquy+bracelet
@@ -73,10 +73,10 @@ That's all there is to it.
 
 So, how unique are the identifiers?
 
-If you use the default format `{smallnum}-{noun}-{noun}` there are only 
+If you use the default pattern `{smallnum}-{noun}-{noun}` there are only 
 925 072 020 possible identifiers. So: NOT VERY UNIQUE.
 
-**Do not use this as a password or a secret!** ... at least not using that format.
+**Do not use this as a password or a secret!** ... at least not using that pattern.
 
 They should be unique **enough** for situations where you just need something 
 to be "unique for a while" in a certain environment. Like, container names, 
