@@ -17,11 +17,11 @@ pytest = "^5.3"
 flake8 = "^3.7.9"
 black = "^19.10b0"
 mypy = "^0.761"
-flake8-import-order = "^0.18.1"
 flake8-builtins = "^1.4.2"
 flake8-blind-except = "^0.1.1"
 flake8-logging-format = "^0.6.0"
 flakehell = "^0.3.3"
+hypothesis = "^5.6.0"
 
 [tool.poetry.scripts]
 roke = 'roke:main'
@@ -35,13 +35,14 @@ target-version = ['py36']
 format = "grouped"
 # show line of source code in output
 show_source = true
+application-import-names = "roke"
 
 [tool.flakehell.plugins]
 # include everything in pyflakes except E501
 pyflakes = ["+*", "-E501"]
 flake8-blind-except = ["+*"]
 flake8-builtins = ["+*"]
-flake8-import-order-flake8-linter = ["+*"]
+flake8-logging-format = ["+*"]
 mccabe = ["+*"]
 pycodestyle = ["+*"]
 

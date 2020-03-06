@@ -41,6 +41,13 @@ def get_dict_list() -> List[Path]:
     return dicts
 
 
+def gen_identifiers(pattern, count):
+    result = []
+    for _ in range(count):
+        result.append(gen_identifier(pattern))
+    return result
+
+
 @click.command()
 @click.option(
     "--pattern",
@@ -50,5 +57,4 @@ def get_dict_list() -> List[Path]:
 @click.option("--count", default=1, help="How many identifiers to generate.")
 def main(pattern, count):
     load_dicts()
-    for _ in range(count):
-        print(gen_identifier(pattern))
+    print("\n".join(gen_identifiers(pattern, count)))
