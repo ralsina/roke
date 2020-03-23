@@ -1,0 +1,10 @@
+kind: pipeline
+type: docker
+name: default
+steps:
+- name: test
+  image: python
+  commands:
+  - pip install poetry
+  - poetry install
+  - poetry run pytest
