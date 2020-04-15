@@ -34,7 +34,11 @@ def gen_identifier(pattern: str) -> str:
 
 def get_dict_list() -> List[Path]:
     dicts = []
-    places = [Path(__file__).parent / "data", Path("~/.local/roke"), Path(".roke")]
+    places = [
+        Path(__file__).parent / "data",
+        Path.home() / ".local" / "roke",
+        Path(".roke"),
+    ]
     for place in places:
         if place.is_dir():
             dicts.extend(list(place.glob("*.txt")))
